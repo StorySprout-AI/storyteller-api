@@ -1,0 +1,45 @@
+default:
+  image: ruby:3.2.2
+  services:
+    - postgres:15.4
+  cache: &global_cache
+    - key: cache-$CI_COMMIT_REF_SLUG
+      paths:
+        #- node_modules/
+        - public/
+        - vendor/ruby
+  before_script:
+    - gem install bundler
+    - bundle config set --local path 'vendor/ruby'
+    - bundle install --jobs 4 --retry 3
+    - bin/rake db:create db:migrate
+    - bin/rake db:seed
+
+variables:
+  RAILS_ENV: test
+  RAILS_MASTER_KEY: $RAILS_MASTER_KEY
+  PROJECT_ROOT: .
+  STACK_DRIVER_ENABLED: 'false'
+  ##########################################################################
+  ############################# postgres ###################################
+  ##########################################################################
+  POSTGRES_DB: storysprout_test
+  POSTGRES_USER: $DATABASE_USER
+  POSTGRES_PASSWORD: $DATABASE_PASSWORD
+  POSTGRES_HOST_AUTH_METHOD: trust
+  PGDATA: /var/lib/postgresql/data/pgdata
+  # Supported timezones https://www.postgresql.org/docs/current/view-pg-timezone-names.html
+  TZ: America/New_York
+  POSTGRES_INITDB_ARGS: '--locale=en_US.UTF-8'
+
+stages:
+  - rspec
+
+rspec:
+  stage: rspec
+  variables:
+    DATABASE_HOST: postgres
+    DATABASE_USER: $DATABASE_USER
+    DATABASE_PASSWORD: $DATABASE_PASSWORD
+  script:
+    - bundle exec rspec --tag "~devtool"
