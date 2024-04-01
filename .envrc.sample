@@ -1,3 +1,4 @@
+export RAILS_ENV=development
 export PORT=3000
 export RAILS_MAX_THREADS=1
 export WEB_CONCURRENCY=0
