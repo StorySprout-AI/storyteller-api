@@ -74,3 +74,10 @@ Temporary Items
 
 # Environtment variables
 .envrc
+
+# Tools
+/.brakeman
+
+# Containerization
+!/docker-compose.example.yml
+/docker-compose*.yml
