@@ -37,9 +37,11 @@ stages:
 
 rspec:
   stage: rspec
+  parallel: 2
   variables:
     DATABASE_HOST: postgres
     DATABASE_USER: $DATABASE_USER
     DATABASE_PASSWORD: $DATABASE_PASSWORD
+    KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC: $KNAPSACK_PRO_RSPEC_TOKEN
   script:
-    - bundle exec rspec --tag "~devtool"
+    - bundle exec rake "knapsack_pro:queue:rspec[--tag \"~devtool\"]"
