@@ -6,7 +6,7 @@ services:
     container_name: redis.storysprout.local
     restart: unless-stopped
     ports:
-      - '6379:6379'
+      - '18379:6379'
     volumes:
       # TODO: Configurations included to address this (seems to not be taking yet): https://github.com/jemalloc/jemalloc/issues/1328
       - ${DATABASE_ROOT_DIR:-'.'}/redis/sysctl.conf:/etc/sysctl.conf
@@ -20,19 +20,19 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_DB: storysprout_development
       POSTGRES_USER_FILE: /run/secrets/database-user
-      #POSTGRES_PASSWORD_FILE: /run/secrets/database-password
       # ⚠️⚠️⚠️ NOTE: 👇🏾 allows all connections without a password - FOR LOCAL DEV ONLY! ⚠️⚠️⚠️
       POSTGRES_HOST_AUTH_METHOD: trust
-      #POSTGRES_INITDB_ARGS: '--auth-host=trust --auth-local=trust'
+      POSTGRES_INITDB_ARGS: '--locale=en_US.UTF-8'
+      TZ: America/New_York
     secrets:
       - database-user
       - database-password
     ports:
-      - '5432:5432'
+      - '18432:5432'
     # IMPORTANT: Be sure to [mkdir -p] these volume paths on your local
     #   before running [docker compose up] for the first time
     volumes:
-      #- ${DATABASE_ROOT_DIR:-'.'}/postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ${DATABASE_ROOT_DIR:-'.'}/postgresql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ${DATABASE_ROOT_DIR:-'.'}/postgresql/data:/var/lib/postgresql/data
       - ${DATABASE_ROOT_DIR:-'.'}/postgresql/downloads:/usr/local/downloads
 
