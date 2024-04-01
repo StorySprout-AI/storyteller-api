@@ -26,4 +26,8 @@ export REDIS_URL=
 # Emails
 export BREVO_API_KEY=
 
+# Networking
 export ADMIN_REMOTE_IP_ADDRESSES=
+
+# Knapsack Pro
+export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=

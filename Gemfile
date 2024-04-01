@@ -62,6 +62,8 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'shoulda-matchers'
   gem 'strong_migrations'
+  # See https://docs.knapsackpro.com/knapsack_pro-ruby/guide/?rails=yes&test-runner=rspec&vcr=yes&ci=gitlab-ci
+  gem 'knapsack_pro', '~> 7.0'
 end
 
 group :development do
