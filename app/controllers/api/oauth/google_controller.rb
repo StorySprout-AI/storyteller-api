@@ -19,9 +19,10 @@ module Api
       end
 
       def create
-        @user = User.find_or_create_from_auth_hash(@id_token)
-        raise Errors::Unauthorized unless @user.persisted?
+        result = OnBoardSingleSignOnUser.call(@id_token)
+        raise Errors::Unauthorized unless result.success?
 
+        @user = result.user
         initialize_access_token!
 
         render json: {

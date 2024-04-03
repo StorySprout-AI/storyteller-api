@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sendinblue.com/v3/smtp/email
+    body:
+      encoding: UTF-8
+      string: '{"to":[{"email":"gil_blanda@koelpin.test","name":"Msgr. Brittaney Padberg"}],"templateId":1,"params":{"SHOW_SOCIAL_LINKS":false}}'
+    headers:
+      User-Agent:
+      - Swagger-Codegen/7.5.0/ruby
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      api-key:
+      - xkeysib-mock-api-key
+      partner-key: []
+      Expect:
+      - ''
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 30 Nov 2023 06:39:23 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '64'
+      Connection:
+      - keep-alive
+      x-envoy-upstream-service-time:
+      - '8'
+      sib-request-id:
+      - fff655fe-2295-962f-8af0-71f2f0c0a2e3
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-headers:
+      - "*"
+      access-control-allow-methods:
+      - PUT, POST, GET, DELETE, PATCH, OPTIONS
+      x-sib-ratelimit-limit:
+      - '1000'
+      x-sib-ratelimit-remaining:
+      - '999'
+      x-sib-ratelimit-reset:
+      - '1'
+      x-sib-server:
+      - BREVO-srv-pr-online-rancher-worker-50
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - '1'
+      CF-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=lQ.3swRFA3Vsvcrs5QX8HXHpXgMWNr94G933CcUVQ3s-1701326363-0-ASw4zMIiCcP1PFP8dS1E9wINH95zirmIIxp7juF5PKk5K24O3B5K6wYIvPBiBPSc77YGsDRupYDSKaayohIoXEM=;
+        path=/; expires=Thu, 30-Nov-23 07:09:23 GMT; domain=.sendinblue.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      CF-RAY:
+      - 82e117c89caae264-ORD
+    body:
+      encoding: ASCII-8BIT
+      string: '{"messageId":"<202311300639.58273272213@smtp-relay.mailin.fr>"}
+
+        '
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: https://api.sendinblue.com/v3/smtp/email
+  recorded_at: Thu, 30 Nov 2023 06:39:23 GMT
+recorded_with: VCR 6.2.0

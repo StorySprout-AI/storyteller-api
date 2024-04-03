@@ -16,7 +16,9 @@ require:
 AllCops:
   TargetRubyVersion: 3.2.2
   # For more information: https://docs.rubocop.org/rubocop/versioning.html
-#  NewCops: disable
+  #NewCops: disable
+  Exclude:
+    - 'db/schema.rb'
 
 Metrics:
   Enabled: false

@@ -22,8 +22,9 @@ module StorytellerApi
     # Doc on ActiveSupport::TimeZone: https://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html
     config.time_zone = 'Eastern Time (US & Canada)'
 
-    config.extra_load_paths = [
-      'lib/tasks'
+    config.extra_load_paths = %w[
+      lib/tasks
+      lib/templates
     ].map { |path| Rails.root.join(path).to_s }
     config.autoload_paths += config.extra_load_paths
     config.eager_load_paths += config.extra_load_paths
