@@ -28,6 +28,25 @@ brew bundle check
 brew bundle
 ```
 
+### Using the `direnv` plugin for `asdf` 
+
+To install the `direnv` plugin for `asdf`, run the following command in your console:
+
+```shell
+# Add the plugin
+asdf plugin add direnv
+
+# Install a version of direnv (match the version in the .tool-versions file)
+asdf install direnv 2.33.0
+```
+
+If you are installing the `direnv` plugin for the first time, you will need to run the following command in your console to set it up:
+
+```shell
+# Edit the shell argument to match your environment
+ asdf direnv setup --shell <zsh|bash> --version latest
+```
+
 ### Managing application secrets
 
 To edit credentials in your IDE, run the following command in your console:

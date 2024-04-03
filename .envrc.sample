@@ -1,3 +1,5 @@
+export RAILS_ENV=development
+export PORT=3000
 export RAILS_MAX_THREADS=1
 export WEB_CONCURRENCY=0
 export NGROK_AUTH_TOKEN=
@@ -11,6 +13,7 @@ export DATABASE_ROOT_DIR="${PROJECT_ROOT}/db/${RAILS_ENV:-development}"
 export DATABASE_NAME=
 export DATABASE_USER=
 export DATABASE_PASSWORD=
+export DATABASE_PORT=5432
 
 # Logging
 export STACKDRIVER_ENABLED=false
@@ -23,4 +26,8 @@ export REDIS_URL=
 # Emails
 export BREVO_API_KEY=
 
+# Networking
 export ADMIN_REMOTE_IP_ADDRESSES=
+
+# Knapsack Pro
+export KNAPSACK_PRO_TEST_SUITE_TOKEN_RSPEC=

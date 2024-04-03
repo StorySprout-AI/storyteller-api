@@ -226,6 +226,8 @@ GEM
       faraday (~> 2.0)
       faraday-follow_redirects
     jwt (2.7.1)
+    knapsack_pro (7.0.1)
+      rake
     language_server-protocol (3.17.0.3)
     logtail (0.1.12)
       msgpack (~> 1.0)
@@ -485,6 +487,7 @@ DEPENDENCIES
   flipper-ui (~> 0.28)
   googleauth
   interactor (~> 3.1)
+  knapsack_pro (~> 7.0)
   logtail-rails
   pg (~> 1.1)
   pry-rails

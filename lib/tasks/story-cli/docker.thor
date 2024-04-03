@@ -87,8 +87,8 @@ module StoryCLI
       return if dry_run?
 
       system(cmd, out: $stdout)
+      FileUtils.rm_rf(cache_store_path, verbose: verbose?)
       FileUtils.rm_rf(database_path, verbose: verbose?)
-      FileUtils.rm_rf(redis_path, verbose: verbose?)
     end
 
     private
@@ -117,11 +117,15 @@ module StoryCLI
     end
 
     def database_path
-      Rails.root.join('db', ENV.fetch('RAILS_ENV', 'development'), 'postgresql', 'data').to_s
+      "#{database_root_path}/postgresql/data"
     end
 
-    def redis_path
-      Rails.root.join('db', ENV.fetch('RAILS_ENV', 'development'), 'redis', 'data').to_s
+    def cache_store_path
+      "#{database_root_path}/redis/data"
+    end
+
+    def database_root_path
+      Rails.root.join('db', Rails.env)
     end
 
     def dry_run?
